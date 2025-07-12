@@ -1,0 +1,21 @@
+n = int(input())
+m = int(input())
+matrix = [[0] * m for _ in range(n)]
+
+num = 1
+i, j = 0, 0
+di, dj = 0, 1  
+
+for _ in range(n * m):
+    matrix[i][j] = num
+    num += 1
+    ni, nj = i + di, j + dj
+    
+    if 0 <= ni < n and 0 <= nj < m and matrix[ni][nj] == 0:
+        i, j = ni, nj
+    else:
+        di, dj = dj, -di
+        i, j = i + di, j + dj
+
+for row in matrix:
+    print(*row)
